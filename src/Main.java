@@ -48,14 +48,18 @@ public class Main {
 
 
             // Deleting the data from the table
+//
+//            String deleteQuery = String.format("DELETE FROM students WHERE id = %d",1);
+//            int deleteInt = statement.executeUpdate(deleteQuery);
+//
+//            if(deleteInt > 0) System.out.println("Deleted Successfully!");
+//            else System.out.println("Deletion Failed!");
 
-            String deleteQuery = String.format("DELETE FROM students WHERE id = %d",1);
-            int deleteInt = statement.executeUpdate(deleteQuery);
-
-            if(deleteInt > 0) System.out.println("Deleted Successfully!");
-            else System.out.println("Deletion Failed!");
-
-
+//          // Just checking with my own data
+//            String updateID = String.format("UPDATE students SET id = %d WHERE id = %d",1,2);
+//            int updateIDCommand = statement.executeUpdate(updateID);
+//            if(updateIDCommand>0) System.out.println("Successful!");
+//            else System.out.println("Failed");
 
 
             //--------Viewing the contents of the table
