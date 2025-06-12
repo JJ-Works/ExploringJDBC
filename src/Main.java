@@ -21,8 +21,10 @@ public class Main {
 
         //Load necessary drivers.
         try{
-            Connection connection = DriverManager.getConnection(url, username, password);
-            Statement statement = connection.createStatement();
+
+            //Using Statement interface not recommended because compiler and you have to run this same piece again and again
+//            Connection connection = DriverManager.getConnection(url, username, password);
+//            Statement statement = connection.createStatement();
 
 
 
@@ -62,9 +64,31 @@ public class Main {
 //            else System.out.println("Failed");
 
 
+//            //Using PreparedStatement
+//            Connection connection = DriverManager.getConnection(url,username,password);
+//            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO students(name,age,marks) VALUES(?,?,?)");
+//
+//            preparedStatement.setString(1,"Janarjan Rajbhandari");
+//            preparedStatement.setInt(2,22);
+//            preparedStatement.setDouble(3,95.2);
+//
+//            int returnedVal = preparedStatement.executeUpdate();
+//            if(returnedVal>0) System.out.println("Inserted Successfully!");
+//            else System.out.println("Insertion failed!");
+
+            // Trying to drop
+            Connection connection = DriverManager.getConnection(url,username,password);
+            PreparedStatement preparedStatement1 = connection.prepareStatement("DELETE FROM students WHERE id = ?");
+            preparedStatement1.setInt(1,2);
+            int dropVal = preparedStatement1.executeUpdate();
+            if(dropVal > 0) System.out.println("Dropped successfully!");
+            else System.out.println("Failed to drop");
+
+
+
             //--------Viewing the contents of the table
             String query = "SELECT * FROM students";
-            ResultSet resultSet = statement.executeQuery(query);
+            ResultSet resultSet = preparedStatement1.executeQuery(query);
 
             while (resultSet.next())
             {
