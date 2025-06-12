@@ -23,6 +23,42 @@ public class Main {
         try{
             Connection connection = DriverManager.getConnection(url, username, password);
             Statement statement = connection.createStatement();
+
+
+
+            // -------------------To Insert Data into the table-----------------------------------//
+            //YOU HAVE TO USE FORMAT SPECIFIER FOR THE SPECIFIC DATATYPE                🔻
+//            String query = String.format("INSERT INTO students(name,age,marks) VALUES('%s',%o,%f)","Aashika",22,98.2);
+//
+//            //since we are inserting into the table so we don't need to print the loop we create a int var and store the table effected in the process.
+//            var rowsAffected = statement.executeUpdate(query);
+//            if(rowsAffected>0) System.out.println("Successfully INSERTED and "+rowsAffected+" rows are affected.");
+//            else System.out.println("Insertion unsuccessful.");
+
+
+            //Updating the contents of the table.
+//
+//            String updateQuery = String.format("UPDATE students SET marks = %f WHERE id = %o",99.7,2);
+//
+//            int updateInt = statement.executeUpdate(updateQuery);
+//
+//
+//            if(updateInt > 0) System.out.println("Updated Successfully!!!");
+//            else System.out.println("Failed to Update!!!");
+
+
+            // Deleting the data from the table
+
+            String deleteQuery = String.format("DELETE FROM students WHERE id = %d",1);
+            int deleteInt = statement.executeUpdate(deleteQuery);
+
+            if(deleteInt > 0) System.out.println("Deleted Successfully!");
+            else System.out.println("Deletion Failed!");
+
+
+
+
+            //--------Viewing the contents of the table
             String query = "SELECT * FROM students";
             ResultSet resultSet = statement.executeQuery(query);
 
@@ -32,9 +68,9 @@ public class Main {
                 String name = resultSet.getString("name");
                 double marks = resultSet.getDouble("marks");
 
-                System.out.println("ID: " + id + "\nNAME: " + name + "\nMarks: "+marks);
-            }
+                System.out.println("ID: " + id + "\nNAME: " + name + "\nMarks: "+ marks +"\n");
 
+            }
         }catch (SQLException e){
             System.out.println(e.getMessage());
         }
