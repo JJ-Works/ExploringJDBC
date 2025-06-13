@@ -117,6 +117,7 @@ public class Main {
                 String choice = sc.next().toUpperCase();
 //                String query = String.format("INSERT INTO students(name, age, marks) VALUES('%s',%d,%f)",name,age,marks);
                 if (choice.equals("N")) {
+                    sc.close();
                     break;
                 }
             }
